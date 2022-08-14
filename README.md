@@ -4,7 +4,7 @@
 
 ### Server
 
-The class providing the server functionality for this exercise is `ruby_server.rb`. This will also
+The class providing the server functionality for this exercise is `ruby_server.rb`.
 
 Works on Ruby version 3 (probably also woks on Ruby version 2.7). Some gems are needed :
 
@@ -30,19 +30,12 @@ All tests are contained within file `ruby_tests.rb`
 Works on Ruby version 3 (probably also woks on Ruby version 2.7). Some gems are needed :
 
 ```
-gem install sinatra
-gem install thin
-gem install file-tail
+gem install minitest
+gem install rest-client
+gem install json
 ```
 
-Start the server in a terminal window with `ruby ruby_server.rb`
-
-Example curl commands to its endpoints :
-
-```
-curl http://localhost:4567/n-query
-curl -d "{\"n-new\": 5}" -H "Content-Type: application/json" -X POST http://localhost:4567/n-new
-```
+Once the server is running, on the same host run the tests with `ruby ruby_tests.rb`
 
 ## Notes
 
@@ -60,9 +53,8 @@ For now, we assume that the request takes no variables or other parameters, beca
 `‘n-query’ value is retrieved from external location/file (e.g. ‘2’)`
 which strongly implies that the n-query value is not passed in via the URL or request, but that it is a single value stored by the system.
 
-It is also unclear what the relationship is between `n-new` and `n-query`. Is the `n-new` variable supplied in the POST is actually meant to be the same variable returned by the GET?
-Currently they have two different names (`n-new` and `n-query`), so we currently treat them as two different variables.
+It is also unclear what the relationship is between `n-new` and `n-query`. Is the `n-new` variable supplied in the POST actually meant to be related to the variable returned by the GET?
 
 ### Refactoring
 
-For a proper codebase, these two Ruby files would be refactored to have their helper methods & additional code moved into other classes & files, so that other classes could also use them. The scope of this test application & its tests is not defined, so for now this refacoring has not been done (because we don't know if we need it)
+For a proper codebase, these two Ruby files would be refactored to have their helper methods & additional code moved into other classes & files, so that other classes could also use them. The scope of this test application & its tests is not clearly defined, so for now this refacoring has not been done (because we don't know if we need it).
