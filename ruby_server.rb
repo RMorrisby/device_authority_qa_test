@@ -46,9 +46,9 @@ def retrieve_n_query_value
 end
 
 # Stores the received value
-# Append the value to the n_query_file.txt file 
+# Append the value to the N_QUERY_FILE file 
 def store_n_new_value(v)
-    init_n_value_file unless File.exist?(N_QUERY_FILE)  
+    init_n_query_file unless File.exist?(N_QUERY_FILE)  
 
     File.open(N_QUERY_FILE, "a") do |f|
         f.puts v
@@ -56,7 +56,7 @@ def store_n_new_value(v)
 end
 
 # Create the N_QUERY_FILE file (as an empty file)
-def init_n_value_file
+def init_n_query_file
     File.new(N_QUERY_FILE, "w") # write nothing to the file
 end
 
@@ -67,6 +67,7 @@ def valid_n_new_payload?(json)
     return false if json.nil? || json.empty?
     return false if json.keys.size > 1
     return false unless json.keys.include?(N_NEW_KEY)
+
     v = json[N_NEW_KEY]
     return false if v.nil?
     return false unless v.is_a?(Numeric)
@@ -85,7 +86,6 @@ end
 post '/n-new' do
     request.body.rewind
     body = request.body.read
-    # puts body.inspect
 
     # If the payload isn't valid JSON, return a 400
     json = nil
