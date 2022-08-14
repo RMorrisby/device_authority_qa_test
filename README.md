@@ -12,6 +12,7 @@ Works on Ruby version 3 (probably also woks on Ruby version 2.7). Some gems are 
 gem install sinatra
 gem install thin
 gem install file-tail
+gem install json
 ```
 
 Start the server in a terminal window with `ruby ruby_server.rb`

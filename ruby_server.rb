@@ -5,6 +5,7 @@
 # gem install sinatra
 # gem install thin
 # gem install file-tail
+# gem install json
 #
 # Start with `ruby ruby_server.rb`
 #
